@@ -1,5 +1,6 @@
 package com.project.spaceService.service;
 
+import com.project.spaceService.model.dto.SpaceDTO;
 import com.project.spaceService.model.dto.SpaceServiceRequestDTO;
 import com.project.spaceService.model.etity.Space;
 import com.project.spaceService.repository.SpaceServiceRepository;
@@ -60,6 +61,14 @@ public class SpaceService {
 
     public Optional<Space> getSpaceById(Long spaceId) {
         return spaceServiceRepository.findById(spaceId);
+    }
+
+    public Boolean existsById(Long userId) {
+        return spaceServiceRepository.existsById(userId);
+    }
+
+    public SpaceDTO findSpaceDTOByName(String username) {
+        return spaceServiceRepository.findSpaceDTOByName(username);
     }
 
 }

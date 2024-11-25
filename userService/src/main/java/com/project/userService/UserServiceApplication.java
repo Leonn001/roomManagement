@@ -1,4 +1,4 @@
-package com.project.spaceService;
+package com.project.userService;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -9,16 +9,17 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication
 @OpenAPIDefinition(
 		info = @Info(
-				title = "Space Service API",
+				title = "User Service API",
 				version = "1.0",
-				description = "API para gerenciar spaces no sistema"
+				description = "API para gerenciar usuários no sistema"
 		)
 )
+
 @EnableDiscoveryClient
-public class SpaceServiceApplication {
+public class UserServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpaceServiceApplication.class, args);
+		SpringApplication.run(UserServiceApplication.class, args);
 	}
 
 }
