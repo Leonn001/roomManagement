@@ -12,14 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class SpaceRequestService {
     @Autowired
-    private  UserServiceClient userServiceClient;
+    private UserServiceClient userServiceClient;
     @Autowired
-    private  SpaceServiceClient spaceServiceClient;
+    private SpaceServiceClient spaceServiceClient;
     @Autowired
     SpaceRequestRepository spaceRequestRepository;
 
@@ -83,5 +84,10 @@ public class SpaceRequestService {
         spaceRequest.setStatus(Status.REJEITADO);
         return spaceRequestRepository.save(spaceRequest);
     }
+
+    public List<SpaceRequest> getAllSpaceRequests() {
+        return spaceRequestRepository.findAll();
+    }
+
 
 }

@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/space-request")
 @Tag(name = "Space Request Service", description = "Endpoints relacionados às requisições dos spaces")
@@ -37,6 +39,13 @@ public class SpaceRequestController {
     public ResponseEntity<SpaceRequest> declineRequest(@PathVariable Long id) {
         SpaceRequest declinedRequest = spaceRequestService.declineSpaceRequest(id);
         return ResponseEntity.ok(declinedRequest);
+    }
+
+    @GetMapping("/getAllSpaceRequests")
+    @Operation(summary = "Lista todas as requisições de espaço", description = "Lista todas as reqs. de espaço")
+    public ResponseEntity<List<SpaceRequest>> getAllSpaceRequests() {
+        List<SpaceRequest> spaceRequests = spaceRequestService.getAllSpaceRequests();
+        return ResponseEntity.ok(spaceRequests);
     }
 
 }

@@ -47,6 +47,9 @@ public class Route {
                 .route(RequestPredicates.PUT("/api/space-request/{id}/decline"),
                         HandlerFunctions.http(SPACE_REQUEST_SERVICE_BASE_URL))
 
+                .route(RequestPredicates.GET("/api/space-request/getAllSpaceRequests"),
+                        HandlerFunctions.http(SPACE_REQUEST_SERVICE_BASE_URL))
+
                 // Adicionando o Circuit Breaker para todas as rotas
                 .filter(CircuitBreakerFilterFunctions.circuitBreaker("spaceRequestServiceCircuitBreaker",
                         URI.create(FALLBACK_ROUTE)))
