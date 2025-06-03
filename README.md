@@ -39,5 +39,4 @@ A arquitetura do sistema segue o modelo de **microsserviços**, sendo composta p
 ### 1. Clonar o Repositório
 
 ```bash
-git clone https://github.com/usuario/nome-do-repositorio.git
-cd nome-do-repositorio
+git clone https://github.com/Leonn001/roomManagement.git
