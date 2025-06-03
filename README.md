@@ -1,42 +1,96 @@
-# Sistema de Gerenciamento de Solicitações de Espaço
+# 🏢 Sistema de Gerenciamento de Solicitações de Espaço
 
-## Descrição
+## 📄 Descrição
 
-Este projeto consiste em um sistema de gerenciamento de solicitações de uso de espaços, composto por múltiplos microsserviços que se comunicam entre si. O sistema tem como objetivo permitir que os usuários solicitem o uso de espaços, e que as solicitações sejam gerenciadas de forma eficiente.
+Este projeto consiste em um sistema distribuído para **gerenciamento de solicitações de uso de espaços físicos**, utilizando uma arquitetura de **microsserviços**. O sistema permite que usuários solicitem o uso de espaços e que essas solicitações passem por um fluxo de gerenciamento e aprovação.
 
-O sistema é baseado nas seguintes tecnologias:
+---
+
+## 🧱 Arquitetura
+
+A arquitetura segue o padrão de **microsserviços**, com separação de responsabilidades e comunicação entre serviços via REST, utilizando o **Spring Cloud Eureka** para descoberta de serviços e **API Gateway** para roteamento.
+
+### 🧩 Microsserviços
+
+1. **UserService**
+   - Cadastro, autenticação e gerenciamento de usuários.
+   - Geração de tokens JWT.
+   - Validação de credenciais e funções (roles).
+
+2. **SpaceService**
+   - CRUD de espaços físicos disponíveis.
+   - Gerenciamento de horários e disponibilidade.
+
+3. **SpaceRequestService**
+   - Criação, listagem e atualização de solicitações de uso.
+   - Fluxo de aprovação e validação de conflitos de agenda.
+
+4. **Gateway**
+   - Roteia as requisições para os microsserviços corretos.
+   - Aplica filtros de segurança baseados em JWT.
+   - Centraliza o acesso às APIs.
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- **Java 17+**
 - **Spring Boot**
-- **Spring Cloud**
-- **Eureka** (para descoberta de serviços)
-- **Swagger** (para documentação da API)
-- **JWT** (para autenticação de usuários)
+- **Spring Cloud (Eureka, Gateway)**
+- **JWT (JSON Web Token)**
+- **Swagger/OpenAPI**
+- **Docker**
+- **Spring Security**
+- **Spring Data JPA**
 
-## Arquitetura
+---
 
-A arquitetura do sistema segue o modelo de **microsserviços**, sendo composta pelos seguintes serviços:
+## 🔐 Segurança
 
-1. **UserService**: Gerencia os usuários.
-2. **SpaceService**: Gerencia os espaços disponíveis.
-3. **SpaceRequestService**: Gerencia as solicitações de uso dos espaços.
-4. **Gateway**: Roteia as requisições para os microsserviços corretos.
+- A autenticação é feita via **JWT**, gerado pelo `UserService` após login.
+- O token é enviado em todas as requisições via header:
 
-## Tecnologias Usadas
+- O **Gateway** intercepta as requisições e valida o token JWT antes de permitir acesso aos serviços internos.
+- Cada microsserviço pode conter segurança adicional baseada em roles.
 
-- **Spring Boot**: Framework para o desenvolvimento dos microsserviços.
-- **Spring Cloud Eureka**: Para descoberta de serviços.
-- **Swagger**: Para documentação da API.
-- **JWT**: Para autenticação.
-- **Docker**: Para facilitar a execução dos microsserviços em containers.
+---
 
-## Pré-Requisitos
+## 🧭 Descoberta de Serviços
 
-- **Java 17** ou superior.
-- **Maven** 3.6 ou superior.
-- IDE de sua preferência (exemplo: IntelliJ IDEA, Visual Studio Code).
+- O sistema utiliza **Eureka Server** como registro de serviços.
+- Todos os microsserviços (exceto o Gateway) se registram no Eureka.
+- O Gateway utiliza Eureka para resolver dinamicamente os destinos das requisições.
 
-## Instalação
+---
 
-### 1. Clonar o Repositório
+## 🧪 Documentação da API
 
-```bash
-git clone https://github.com/Leonn001/roomManagement.git
+Cada serviço possui documentação acessível via Swagger:
+
+- **UserService**: `http://localhost:PORT/swagger-ui.html`
+- **SpaceService**: `http://localhost:PORT/swagger-ui.html`
+- **SpaceRequestService**: `http://localhost:PORT/swagger-ui.html`
+
+> Substitua `PORT` pelas portas de cada microsserviço.
+
+---
+
+## ✅ Pré-Requisitos
+Java 17 ou superior
+
+Maven 3.6+
+IDE de sua preferência (IntelliJ, VSCode, Eclipse)
+
+
+## ⚙️ Configuração e Execução
+
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/Leonn001/roomManagement.git
+   cd seu-repositorio
+
+## Inicie o Eureka Server
+
+cd eureka-server
+./mvnw spring-boot:run
+
