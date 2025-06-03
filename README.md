@@ -66,11 +66,9 @@ A arquitetura segue o padrão de **microsserviços**, com separação de respons
 
 Cada serviço possui documentação acessível via Swagger:
 
-- **UserService**: `http://localhost:PORT/swagger-ui.html`
-- **SpaceService**: `http://localhost:PORT/swagger-ui.html`
-- **SpaceRequestService**: `http://localhost:PORT/swagger-ui.html`
-
-> Substitua `PORT` pelas portas de cada microsserviço.
+- **UserService**: `http://localhost:8081/swagger-ui.html`
+- **SpaceService**: `http://localhost:8082/swagger-ui.html`
+- **SpaceRequestService**: `http://localhost:8083/swagger-ui.html`
 
 ---
 
@@ -89,7 +87,7 @@ IDE de sua preferência (IntelliJ, VSCode, Eclipse)
    cd seu-repositorio
 
 ## Inicie o Eureka Server
-
-cd eureka-server
-./mvnw spring-boot:run
+   ```bash
+   cd eureka-server
+   ./mvnw spring-boot:run
 
