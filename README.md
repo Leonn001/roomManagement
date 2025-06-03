@@ -32,7 +32,6 @@ A arquitetura do sistema segue o modelo de **microsserviços**, sendo composta p
 
 - **Java 17** ou superior.
 - **Maven** 3.6 ou superior.
-- **Docker** (para rodar containers, caso necessário).
 - IDE de sua preferência (exemplo: IntelliJ IDEA, Visual Studio Code).
 
 ## Instalação
