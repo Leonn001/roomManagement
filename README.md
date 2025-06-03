@@ -39,7 +39,6 @@ A arquitetura segue o padrão de **microsserviços**, com separação de respons
 - **Spring Cloud (Eureka, Gateway)**
 - **JWT (JSON Web Token)**
 - **Swagger/OpenAPI**
-- **Docker**
 - **Spring Security**
 - **Spring Data JPA**
 
